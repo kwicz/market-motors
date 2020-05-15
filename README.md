@@ -23,11 +23,11 @@ This site will be an opportunity for customers to learn more about the current i
 ||
 |:---:|
 |Monochromatic Site Wireframe|
-|![Site Wireframe](./public/wireframe.png)
+|![Site Wireframe](./marketMotorsWireframe.png)
 |React Components Tree Diagram|
-|![Components Diagram](./public/componentDiagram.png)|
+|![Components Diagram](./marketMotorsComponents.png)|
 |Database Table Structure|
-|![Database Structure](./public/dbTables.png)|
+|![Database Structure](./db_tables.png)|
 
 
 

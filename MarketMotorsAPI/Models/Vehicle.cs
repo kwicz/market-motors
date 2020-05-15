@@ -9,6 +9,7 @@ namespace MarketMotors.Models
     {
       this.Features = new HashSet<Feature>();
     }
+    public virtual ApplicationUser User { get; set; }
     public int VehicleId { get; set; }
     [Required]
     public string VehicleTitle { get; set; }

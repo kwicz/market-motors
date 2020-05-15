@@ -3,18 +3,25 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using MarketMotors.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace MarketMotors.Controllers
 {
+  [Authorize]
   [Route("api/[controller]")]
   [ApiController]
   public class VehiclesController : ControllerBase
   {
-    private MarketMotorsContext _db;
+    private readonly MarketMotorsContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public VehiclesController(MarketMotorsContext db)
+    public VehiclesController(UserManager<ApplicationUser> userManager, MarketMotorsContext database)
     {
-      _db = db;
+      _userManager = userManager;
+      _db = database;
     }
 
     // GET api/vehicles

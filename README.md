@@ -31,8 +31,24 @@ This site will be an opportunity for customers to learn more about the current i
 
 
 
-
 #### Setup/Installation
+
+1. Clone the Repository from GitHub
+* 
+*
+*
+
+
+2. Launch the back end applicaiton
+*
+*
+*
+
+3. Launch the front end application
+*
+*
+*
+
 
 ## Available Scripts
 

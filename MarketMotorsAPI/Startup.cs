@@ -14,7 +14,7 @@ using System.Reflection;
 using System.IO;
 using MarketMotors.Models;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Identity;
 
 namespace MarketMotors
 {
@@ -30,16 +30,16 @@ namespace MarketMotors
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
+            // services.AddDbContext<MarketMotorsContext>(opt =>
+            //     opt.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+            
+            services.AddEntityFrameworkMySql()
+                .AddDbContext<MarketMotorsContext>(options => options
+                .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
 
-            services.AddDbContext<MarketMotorsContext>(opt =>
-                opt.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<MarketMotorsContext>()
+                .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -84,6 +84,7 @@ namespace MarketMotors
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

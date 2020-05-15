@@ -16,9 +16,14 @@ namespace MarketMotors.Models
     public string Vin { get; set; }
     [Required]
     public string StockNumber { get; set; }
+    [Required]
+    [StringLength(4)]
     public string Make { get; set; }
+    [Required]
     public string Model { get; set; }
+    [Required]
     public int Year { get; set; }
+    [Required]
     public string Condition { get; set; }
     public string Price { get; set; }
     public string Availability { get; set; }

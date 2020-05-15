@@ -18,7 +18,7 @@ This site will be an opportunity for customers to learn more about the current i
 
 >_"As administrative user, I want to be able to be able to add, edit, and delete inventory from the database of current inventory."_
 
-## Organization
+## Project Organization
 
 ||
 |:---:|

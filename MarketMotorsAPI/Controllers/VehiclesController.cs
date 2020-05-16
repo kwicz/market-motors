@@ -26,7 +26,7 @@ namespace MarketMotors.Controllers
 
     // GET api/vehicles
     [HttpGet]
-    public ActionResult<IEnumerable<Vehicle>> Get(string vehicleTitle, string vin, string stockNumber, string make, string model, int year, string condition, string price, string availability, string exteriorColor, string interiorColor, string doors, string fuelType, string engine, string transmission, string mileage)
+    public ActionResult<IEnumerable<Vehicle>> Get(string vehicleTitle, string vin, string stockNumber, string make, string model, int year, string condition, string price, string availability, string exteriorColor, string interiorColor, string doors, string fuelType, string engine, string transmission, string mileage, string additionalFeatures)
     {
       var query = _db.Vehicles.AsQueryable();
 
@@ -108,6 +108,11 @@ namespace MarketMotors.Controllers
       if (mileage != null)
       {
         query = query.Where(entry => entry.Mileage == mileage);
+      }
+
+      if (additionalFeatures != null)
+      {
+        query = query.Where(entry => entry.AdditionalFeatures == additionalFeatures);
       }
 
       return query.ToList();

@@ -36,5 +36,6 @@ namespace MarketMotors.Models
     public string Transmission { get; set; }
     public string Mileage { get; set; }
     public virtual ICollection<Feature> Features { get; set; }
+    public string AdditionalFeatures { get; set; }
   }
 }

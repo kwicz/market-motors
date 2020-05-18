@@ -16,9 +16,9 @@ namespace MarketMotors.Models
     [Required]
     public string Vin { get; set; }
     [Required]
+    [StringLength(4)]
     public string StockNumber { get; set; }
     [Required]
-    [StringLength(4)]
     public string Make { get; set; }
     [Required]
     public string Model { get; set; }
@@ -36,6 +36,5 @@ namespace MarketMotors.Models
     public string Transmission { get; set; }
     public string Mileage { get; set; }
     public virtual ICollection<Feature> Features { get; set; }
-    public string AdditionalFeatures { get; set; }
   }
 }

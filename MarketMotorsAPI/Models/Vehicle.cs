@@ -14,6 +14,7 @@ namespace MarketMotors.Models
     [Required]
     public string VehicleTitle { get; set; }
     [Required]
+    [StringLength(17)]
     public string Vin { get; set; }
     [Required]
     [StringLength(4)]

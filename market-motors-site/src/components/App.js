@@ -4,7 +4,8 @@ import '../App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from './NavBar';
 import HomePage from './Client/HomePage'
-import VehiclesPage from './VehiclesPage'
+import Dashboard from './Admin/Dashboard'
+import SignIn from './Admin/SignIn'
 import Footer from './Footer'
 
 
@@ -13,7 +14,8 @@ function App() {
     <React.Fragment>
       <NavBar />
       <HomePage />
-      <VehiclesPage />
+      <SignIn />
+      <Dashboard />
       <Footer />
     </React.Fragment>
   );

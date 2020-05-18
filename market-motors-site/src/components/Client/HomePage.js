@@ -5,6 +5,7 @@ import { makeApiCall } from '../../actions';
 import FeaturedVehicles from './FeaturedVehicles';
 import AboutUs from './AboutUs';
 import Contact from './Contact';
+import VehiclesPage from './VehiclesPage';
 
 class HomePage extends React.Component {
 
@@ -22,6 +23,7 @@ class HomePage extends React.Component {
         <FeaturedVehicles />
         <AboutUs />
         <Contact />
+        <VehiclesPage />
       </React.Fragment>
     );
   }

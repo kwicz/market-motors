@@ -6,6 +6,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import Map from './Map';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
 
 
 // const useStyles = makeStyles((theme) => ({
@@ -45,13 +50,14 @@ function Contact() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <div className={classes.heroContent}>
-                  <Typography component="h4" variant="h4" align="center" color="textPrimary" gutterBottom>
+                <Typography component="h4" variant="h4" align="center" color="textPrimary" gutterBottom>
                     (574) 875-9700
-                  </Typography>
-                  <Typography component="h4" variant="h4" align="center" color="textPrimary" gutterBottom>
+                </Typography>
+                <Typography component="h4" variant="h4" align="center" color="textPrimary" gutterBottom>
                     23785 US 33 Elkhart, IN
-                  </Typography>
-                  <hr />
+                </Typography>
+                <hr />
+                <List>
                   <Typography variant="h5" align="center" color="textSecondary" paragraph>
                     Office Hours:
                   </Typography>
@@ -74,6 +80,7 @@ function Contact() {
                       </Grid>
                     </Grid>
                   </div>
+                </List>  
               </div>
             </Grid>  
           </Grid>

@@ -77,6 +77,7 @@ function NewVehicleForm() {
           </form>
         </Container>
       </MuiThemeProvider>
+      <br />
     </React.Fragment>
   );
 }

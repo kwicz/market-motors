@@ -73,7 +73,7 @@ function FeaturedVehicles() {
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary">
-                      View
+                      View Details
                     </Button>
                   </CardActions>
                 </Card>

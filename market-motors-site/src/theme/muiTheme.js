@@ -7,7 +7,7 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       light: '#4c8c4a',
-      main: '#1b5e20',
+      main: '#003300',
       dark: '#003300',
       contrastText: '#fff',
     },
@@ -18,13 +18,6 @@ const theme = createMuiTheme({
       contrastText: '#000000',      
     }
   }
-  // overrides: {
-  //   NavBar: {
-  //     paper: {
-  //       background: '#18202c',
-  //     },
-  //   },
-  // },
 });
 
 export default theme;

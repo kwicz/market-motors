@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -41,6 +43,10 @@ function VehiclesPage() {
   
   const vehiclesRows = vehicles.map((e) => <TableRow value={e.vehicleId - 1} key={e.vehicleId - 1}>{e.vehicleTitle}</TableRow>)
 
+  function onClickingDetails() {
+    console.log('details button click');
+  }
+
   return (
     <React.Fragment>
       <h1>Vehicles List</h1>
@@ -56,7 +62,7 @@ function VehiclesPage() {
                 <TableCell align="right">Price</TableCell>
                 <TableCell align="right">Miles</TableCell>
                 <TableCell align="right">Condition</TableCell>
-                <TableCell align="right">Engine</TableCell>
+                <TableCell align="right">Details</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -66,9 +72,15 @@ function VehiclesPage() {
                     {row.vehicleTitle}
                   </TableCell>
                   <TableCell align="right">{row.price}</TableCell>
-                  <TableCell align="right">{row.miles}</TableCell>
+                  <TableCell align="right">{row.mileage}</TableCell>
                   <TableCell align="right">{row.condition}</TableCell>
-                  <TableCell align="right">{row.engine}</TableCell>
+                  <TableCell align="right">
+                    <Button variant="info" onClick={onClickingDetails}>
+                      {/* <Link to="/vehicleDetails"> */}
+                        Details
+                      {/* </Link> */}
+                    </Button>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

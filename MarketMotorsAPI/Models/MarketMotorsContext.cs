@@ -1,9 +1,11 @@
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+// using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace MarketMotors.Models
-{
-  public class MarketMotorsContext : IdentityDbContext<ApplicationUser>
+{ 
+  // Use with Identity
+  // public class MarketMotorsContext : IdentityDbContext<ApplicationUser>
+  public class MarketMotorsContext : DbContext
   {
     public MarketMotorsContext(DbContextOptions<MarketMotorsContext> options) : base(options) { }
 

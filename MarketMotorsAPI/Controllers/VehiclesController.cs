@@ -5,9 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using MarketMotors.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using System.Threading.Tasks;
-using System.Security.Claims;
+// using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Cors;
 
 namespace MarketMotors.Controllers
@@ -18,17 +16,18 @@ namespace MarketMotors.Controllers
   public class VehiclesController : ControllerBase
   {
     private readonly MarketMotorsContext _db;
-    private readonly UserManager<ApplicationUser> _userManager;
+    // private readonly UserManager<ApplicationUser> _userManager;
 
-    public VehiclesController(UserManager<ApplicationUser> userManager, MarketMotorsContext database)
+    // public VehiclesController(UserManager<ApplicationUser> userManager, MarketMotorsContext database)
+    public VehiclesController(MarketMotorsContext db)
     {
-      _userManager = userManager;
-      _db = database;
+      // _userManager = userManager;
+      _db = db;
     }
 
     // GET api/vehicles
     [HttpGet]
-    public ActionResult<IEnumerable<Vehicle>> Get(string vehicleTitle, string vin, string stockNumber, string make, string model, int year, string condition, string price, string availability, string exteriorColor, string interiorColor, string doors, string fuelType, string engine, string transmission, string mileage)
+    public ActionResult<IEnumerable<Vehicle>> Get(string vehicleTitle, string vin, string stockNumber, string make, string model, string year, string condition, string price, string availability, string exteriorColor, string interiorColor, string doors, string fuelType, string engine, string transmission, string mileage)
     {
       var query = _db.Vehicles.AsQueryable();
 
@@ -57,7 +56,7 @@ namespace MarketMotors.Controllers
         query = query.Where(entry => entry.Model == model);
       }
 
-      if (year != 0)
+      if (year != null)
       {
         query = query.Where(entry => entry.Year == year);
       }
@@ -133,6 +132,7 @@ namespace MarketMotors.Controllers
     }
 
     // POST api/vehicles/id
+    [EnableCors("MyPolicy")]
     [HttpPut("{id}")]
     public void Put(int id, [FromBody] Vehicle vehicle)
     {
@@ -142,6 +142,7 @@ namespace MarketMotors.Controllers
     }
 
     // POST api/vehicles/id
+    [EnableCors("MyPolicy")]
     [HttpDelete("{id}")]
     public void Delete(int id)
     {

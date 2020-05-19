@@ -14,7 +14,7 @@ using System.Reflection;
 using System.IO;
 using MarketMotors.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+// using Microsoft.AspNetCore.Identity;
 
 namespace MarketMotors
 {
@@ -30,8 +30,10 @@ namespace MarketMotors
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.AddDbContext<MarketMotorsContext>(opt =>
-            //     opt.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+
+            // DB configuration without Identity
+            services.AddDbContext<MarketMotorsContext>(opt =>
+                opt.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
                 {
@@ -46,9 +48,10 @@ namespace MarketMotors
                 .AddDbContext<MarketMotorsContext>(options => options
                 .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<MarketMotorsContext>()
-                .AddDefaultTokenProviders();
+            //Enable Identity
+            // services.AddIdentity<ApplicationUser, IdentityRole>()
+            //     .AddEntityFrameworkStores<MarketMotorsContext>()
+            //     .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

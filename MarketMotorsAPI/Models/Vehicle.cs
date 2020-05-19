@@ -9,12 +9,12 @@ namespace MarketMotors.Models
     {
       this.Features = new HashSet<Feature>();
     }
-    public virtual ApplicationUser User { get; set; }
+    // public virtual ApplicationUser User { get; set; }
     public int VehicleId { get; set; }
     // [Required]
     public string VehicleTitle { get; set; }
     // [Required]
-    [StringLength(17)]
+    // [StringLength(17)]
     public string Vin { get; set; }
     // [Required]
     [StringLength(4)]
@@ -24,7 +24,7 @@ namespace MarketMotors.Models
     // [Required]
     public string Model { get; set; }
     // [Required]
-    public int Year { get; set; }
+    public string Year { get; set; }
     // [Required]
     public string Condition { get; set; }
     public string Price { get; set; }

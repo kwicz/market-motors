@@ -8,7 +8,6 @@ import Dashboard from './Admin/Dashboard'
 import SignIn from './Admin/SignIn'
 import Footer from './Footer'
 
-
 function App() {
   return (
     <React.Fragment>

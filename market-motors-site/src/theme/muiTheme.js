@@ -17,14 +17,14 @@ const theme = createMuiTheme({
       dark: '#c5a600',
       contrastText: '#000000',      
     }
-  },
-  overrides: {
-    NavBar: {
-      paper: {
-        background: '#18202c',
-      },
-    },
-  },
+  }
+  // overrides: {
+  //   NavBar: {
+  //     paper: {
+  //       background: '#18202c',
+  //     },
+  //   },
+  // },
 });
 
 export default theme;

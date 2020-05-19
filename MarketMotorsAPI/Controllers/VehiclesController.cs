@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using Microsoft.AspNetCore.Mvc;
 using MarketMotors.Models;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Cors;
 
 namespace MarketMotors.Controllers
 {
@@ -114,9 +116,11 @@ namespace MarketMotors.Controllers
     }
 
     // POST api/vehicles
+    [EnableCors("MyPolicy")]
     [HttpPost]
     public void Post([FromBody] Vehicle vehicle)
     {
+      Console.WriteLine("DB ADD REACHED");
       _db.Vehicles.Add(vehicle);
       _db.SaveChanges();
     }

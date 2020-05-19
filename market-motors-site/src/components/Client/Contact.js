@@ -49,8 +49,9 @@ function Contact() {
                     (574) 875-9700
                   </Typography>
                   <Typography component="h4" variant="h4" align="center" color="textPrimary" gutterBottom>
-                    237865 US 33 Elkhart, IN
+                    23785 US 33 Elkhart, IN
                   </Typography>
+                  <hr />
                   <Typography variant="h5" align="center" color="textSecondary" paragraph>
                     Office Hours:
                   </Typography>

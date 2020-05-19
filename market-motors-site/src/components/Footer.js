@@ -34,7 +34,7 @@ function Footer() {
           Admin Login
         </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
+        23785 US 33, Elkhart, IN 46517
         </Typography>
         <Copyright />
       </footer>

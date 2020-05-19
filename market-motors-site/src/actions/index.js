@@ -29,6 +29,26 @@ export const makeApiCall = () => {
   }
 }
 
+// export const addVehicle = () => ({
+//   type: c.ADD_VEHICLE
+// });
+
+// export const postApiCall = () => {
+//   return dispatch => {
+//     dispatch(addVehicle);
+//     return fetch(`http://localhost:5000/api/vehicles/`,
+//       method: 'POST')
+//       .then(response => response.json())
+//       .then(
+//         (jsonifiedResponse) => {
+//           dispatch(getVehiclesSuccess(jsonifiedResponse));
+//         })
+//       .catch((error) => {
+//         dispatch(getVehiclesFailure(error));
+//       });
+//   }
+// }
+
 // export const requestMap = () => ({
 //   type: c.REQUEST_MAP
 // });

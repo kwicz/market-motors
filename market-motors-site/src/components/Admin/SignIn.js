@@ -46,10 +46,10 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: '#fdd835',
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -105,6 +105,7 @@ export default function SignInSide() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              style={{ background: '#003300' }}
             >
               Sign In
             </Button>

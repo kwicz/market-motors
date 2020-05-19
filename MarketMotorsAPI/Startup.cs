@@ -32,6 +32,15 @@ namespace MarketMotors
         {
             // services.AddDbContext<MarketMotorsContext>(opt =>
             //     opt.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                }));
+
             
             services.AddEntityFrameworkMySql()
                 .AddDbContext<MarketMotorsContext>(options => options
@@ -75,6 +84,9 @@ namespace MarketMotors
                 app.UseHsts();
             }
 
+            // app.UseCors(MyAllowSpecificOrigins);
+            app.UseCors("MyPolicy");
+            
             app.UseStaticFiles();
             app.UseCookiePolicy();
 

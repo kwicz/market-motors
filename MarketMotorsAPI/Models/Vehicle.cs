@@ -11,21 +11,21 @@ namespace MarketMotors.Models
     }
     public virtual ApplicationUser User { get; set; }
     public int VehicleId { get; set; }
-    [Required]
+    // [Required]
     public string VehicleTitle { get; set; }
-    [Required]
+    // [Required]
     [StringLength(17)]
     public string Vin { get; set; }
-    [Required]
+    // [Required]
     [StringLength(4)]
     public string StockNumber { get; set; }
-    [Required]
+    // [Required]
     public string Make { get; set; }
-    [Required]
+    // [Required]
     public string Model { get; set; }
-    [Required]
+    // [Required]
     public int Year { get; set; }
-    [Required]
+    // [Required]
     public string Condition { get; set; }
     public string Price { get; set; }
     public string Availability { get; set; }

@@ -13,19 +13,6 @@ import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import theme from '../../theme/muiTheme'
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -72,9 +59,9 @@ function FeaturedVehicles() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      View Details
-                    </Button>
+                      <Button size="small" color="primary">
+                        View Details
+                      </Button>
                   </CardActions>
                 </Card>
               </Grid>

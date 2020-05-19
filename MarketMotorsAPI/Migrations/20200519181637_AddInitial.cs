@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MarketMotors.Migrations
 {
-    public partial class Initial : Migration
+    public partial class AddInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,12 +13,12 @@ namespace MarketMotors.Migrations
                 {
                     VehicleId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    VehicleTitle = table.Column<string>(nullable: false),
-                    Vin = table.Column<string>(nullable: false),
-                    StockNumber = table.Column<string>(nullable: false),
+                    VehicleTitle = table.Column<string>(nullable: true),
+                    Vin = table.Column<string>(nullable: true),
+                    StockNumber = table.Column<string>(maxLength: 4, nullable: true),
                     Make = table.Column<string>(nullable: true),
                     Model = table.Column<string>(nullable: true),
-                    Year = table.Column<int>(nullable: false),
+                    Year = table.Column<string>(nullable: true),
                     Condition = table.Column<string>(nullable: true),
                     Price = table.Column<string>(nullable: true),
                     Availability = table.Column<string>(nullable: true),
@@ -35,14 +35,38 @@ namespace MarketMotors.Migrations
                     table.PrimaryKey("PK_Vehicles", x => x.VehicleId);
                 });
 
-            migrationBuilder.InsertData(
-                table: "Vehicles",
-                columns: new[] { "VehicleId", "Availability", "Condition", "Doors", "Engine", "ExteriorColor", "FuelType", "InteriorColor", "Make", "Mileage", "Model", "Price", "StockNumber", "Transmission", "VehicleTitle", "Vin", "Year" },
-                values: new object[] { 1, "Available", "Good", "3", "V8", "Taupe", "Gasoline", "Taupe", "Chevy", "100,000", "Model", "2,000", "1655", "Automatic", "1998 Chevy S10", "79879851655", 1998 });
+            migrationBuilder.CreateTable(
+                name: "Features",
+                columns: table => new
+                {
+                    FeatureId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    VehicleId = table.Column<int>(nullable: false),
+                    PowerWindows = table.Column<bool>(nullable: false),
+                    PowerLocks = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Features", x => x.FeatureId);
+                    table.ForeignKey(
+                        name: "FK_Features_Vehicles_VehicleId",
+                        column: x => x.VehicleId,
+                        principalTable: "Vehicles",
+                        principalColumn: "VehicleId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Features_VehicleId",
+                table: "Features",
+                column: "VehicleId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Features");
+
             migrationBuilder.DropTable(
                 name: "Vehicles");
         }

@@ -35,12 +35,8 @@ function VehiclesPage() {
 
   const vehicles = useSelector(state => state.vehiclesAPICall.vehicles)
   const vehiclesState = useSelector(state => state.vehiclesAPICall)
-  console.log("VEHICLES STATE: ", vehiclesState);
-  console.log("VEHICLES: ", vehicles);
-  console.log("VEHICLES NAME: ", vehicles[0])
   const vehiclesList = vehicles.map((e) => <li value={e.vehicleId - 1} key={e.vehicleId - 1}>{e.vehicleTitle}</li>)
-  console.log("VEHICLES LIST: ", vehiclesList)
-  
+
   const vehiclesRows = vehicles.map((e) => <TableRow value={e.vehicleId - 1} key={e.vehicleId - 1}>{e.vehicleTitle}</TableRow>)
 
   function onClickingDetails() {
@@ -75,7 +71,7 @@ function VehiclesPage() {
                   <TableCell align="right">{row.mileage}</TableCell>
                   <TableCell align="right">{row.condition}</TableCell>
                   <TableCell align="right">
-                    <Button variant="info" onClick={onClickingDetails}>
+                    <Button onClick={onClickingDetails}>
                       {/* <Link to="/vehicleDetails"> */}
                         Details
                       {/* </Link> */}

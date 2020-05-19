@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MarketMotors.Migrations
 {
     [DbContext(typeof(MarketMotorsContext))]
-    [Migration("20200515160209_Initial")]
-    partial class Initial
+    [Migration("20200519181637_AddInitial")]
+    partial class AddInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -17,6 +17,24 @@ namespace MarketMotors.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("MarketMotors.Models.Feature", b =>
+                {
+                    b.Property<int>("FeatureId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("PowerLocks");
+
+                    b.Property<bool>("PowerWindows");
+
+                    b.Property<int>("VehicleId");
+
+                    b.HasKey("FeatureId");
+
+                    b.HasIndex("VehicleId");
+
+                    b.ToTable("Features");
+                });
 
             modelBuilder.Entity("MarketMotors.Models.Vehicle", b =>
                 {
@@ -46,43 +64,27 @@ namespace MarketMotors.Migrations
                     b.Property<string>("Price");
 
                     b.Property<string>("StockNumber")
-                        .IsRequired();
+                        .HasMaxLength(4);
 
                     b.Property<string>("Transmission");
 
-                    b.Property<string>("VehicleTitle")
-                        .IsRequired();
+                    b.Property<string>("VehicleTitle");
 
-                    b.Property<string>("Vin")
-                        .IsRequired();
+                    b.Property<string>("Vin");
 
-                    b.Property<int>("Year");
+                    b.Property<string>("Year");
 
                     b.HasKey("VehicleId");
 
                     b.ToTable("Vehicles");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            VehicleId = 1,
-                            Availability = "Available",
-                            Condition = "Good",
-                            Doors = "3",
-                            Engine = "V8",
-                            ExteriorColor = "Taupe",
-                            FuelType = "Gasoline",
-                            InteriorColor = "Taupe",
-                            Make = "Chevy",
-                            Mileage = "100,000",
-                            Model = "Model",
-                            Price = "2,000",
-                            StockNumber = "1655",
-                            Transmission = "Automatic",
-                            VehicleTitle = "1998 Chevy S10",
-                            Vin = "79879851655",
-                            Year = 1998
-                        });
+            modelBuilder.Entity("MarketMotors.Models.Feature", b =>
+                {
+                    b.HasOne("MarketMotors.Models.Vehicle", "Vehicle")
+                        .WithMany("Features")
+                        .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

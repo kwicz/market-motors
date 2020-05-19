@@ -28,10 +28,14 @@ function NavBar() {
       <MuiThemeProvider theme={theme} className={classes.root}>
         <AppBar  position="static">
           <Toolbar>
-            <Typography variant="h6" className={classes.title}>
-              Market Motors
-            </Typography>
-            <Button color="inherit">See All Inventory</Button>
+              <Typography variant="h6" className={classes.title}>
+            <Link to="/homepage">
+                Market Motors
+            </Link>
+              </Typography>
+            <Button color="inherit">
+              <Link to="/vehicles">See All Inventory</Link>
+            </Button>
           </Toolbar>
         </AppBar>
       </MuiThemeProvider>

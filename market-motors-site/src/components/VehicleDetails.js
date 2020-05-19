@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import theme from '../../theme/muiTheme'
+import theme from '../theme/muiTheme'
 
 const useStyles = makeStyles((theme) => ({
   root: {

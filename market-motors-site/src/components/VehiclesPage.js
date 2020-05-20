@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import * as a from '../actions'
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -30,17 +31,16 @@ const useStyles = makeStyles({
   },
 });
 
+
 function VehiclesPage() {
   const classes = useStyles();
-
+  const dispatch = useDispatch();
   const vehicles = useSelector(state => state.vehiclesAPICall.vehicles)
-  const vehiclesState = useSelector(state => state.vehiclesAPICall)
-  const vehiclesList = vehicles.map((e) => <li value={e.vehicleId - 1} key={e.vehicleId - 1}>{e.vehicleTitle}</li>)
-
-  const vehiclesRows = vehicles.map((e) => <TableRow value={e.vehicleId - 1} key={e.vehicleId - 1}>{e.vehicleTitle}</TableRow>)
-
-  function onClickingDetails() {
-    console.log('details button click');
+  
+  function handleSelectedRowClick(vehicle) {
+    console.log("SELECTED VEHICLE: ", vehicle)
+    const action = a.selectedVehicle(vehicle)
+    dispatch(action);
   }
 
   return (
@@ -63,21 +63,26 @@ function VehiclesPage() {
             </TableHead>
             <TableBody>
               {vehicles.map((row) => (
-                <TableRow key={row.vehicleId}>
-                  <TableCell component="th" scope="row">
-                    {row.vehicleTitle}
-                  </TableCell>
-                  <TableCell align="right">{row.price}</TableCell>
-                  <TableCell align="right">{row.mileage}</TableCell>
-                  <TableCell align="right">{row.condition}</TableCell>
-                  <TableCell align="right">
-                    <Button onClick={onClickingDetails}>
-                      {/* <Link to="/vehicleDetails"> */}
-                        Details
-                      {/* </Link> */}
-                    </Button>
-                  </TableCell>
-                </TableRow>
+                <Link 
+                  onClick={() => {
+                    handleSelectedRowClick(row);
+                  }}
+                  to="/vehicledetails"
+                  id={row.id}
+                  key={row.id}
+                  >
+                  <TableRow key={row.vehicleId}>
+                    <TableCell component="th" scope="row">
+                      {row.vehicleTitle}
+                    </TableCell>
+                    <TableCell align="right">{row.price}</TableCell>
+                    <TableCell align="right">{row.mileage}</TableCell>
+                    <TableCell align="right">{row.condition}</TableCell>
+                    <TableCell align="right">
+                      Details
+                    </TableCell>
+                  </TableRow>
+                </Link>
               ))}
             </TableBody>
           </Table>

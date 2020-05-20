@@ -14,7 +14,6 @@ class HomePage extends React.Component {
     console.log("Component did mount props: ", this.props)
   }
 
-
   render() {
     return (
       <React.Fragment>

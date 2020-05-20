@@ -12,9 +12,9 @@ namespace MarketMotors.Models
     // public virtual ApplicationUser User { get; set; }
     public int VehicleId { get; set; }
     public string VehicleTitle { get; set; }
+    public string Featured { get; set; }
     public string Vin { get; set; }
     public string StockNumber { get; set; }
-    public string Featured { get; set; }
     public string Make { get; set; }
     public string Model { get; set; }
     public string Year { get; set; }

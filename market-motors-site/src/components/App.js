@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../logo.svg';
 import '../App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from './NavBar';
@@ -7,8 +6,10 @@ import HomePage from './Client/HomePage'
 import Dashboard from './Admin/Dashboard'
 import SignIn from './Admin/SignIn'
 import NewVehicleForm from './Admin/NewVehicleForm'
+import EditVehicleForm from './Admin/EditVehicleForm'
 import VehiclesPage from './VehiclesPage'
-import VehicleDetails from './VehicleDetails'
+import ClientVehicleDetails from './Client/ClientVehicleDetails'
+import AdminVehicleDetails from './Admin/AdminVehicleDetails'
 import Footer from './Footer'
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
           <VehiclesPage />
          </Route>
          <Route path="/vehicledetails">
-          <VehicleDetails />
+          <ClientVehicleDetails />
          </Route>
          <Route path="/signin">
           <SignIn />
@@ -33,6 +34,12 @@ function App() {
          </Route>
          <Route path="/newvehicle">
           <NewVehicleForm />
+         </Route>
+         <Route path="/editvehicle">
+          <EditVehicleForm />
+         </Route>
+         <Route path="/admindetails">
+          <AdminVehicleDetails />
          </Route>
        </Switch>
       <Footer />

@@ -1,28 +1,10 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
 import Map from './Map';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-
-
-// const useStyles = makeStyles((theme) => ({
-//   heroContent: {
-//     backgroundColor: theme.palette.background.paper,
-//     minHeight: 300,
-//     padding: theme.spacing(8, 0, 6),
-//   },
-//   heroButtons: {
-//     marginTop: theme.spacing(4),
-//   }
-// }));
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,8 +16,6 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
-
-
 
 function Contact() {
   const classes = useStyles();
@@ -62,24 +42,14 @@ function Contact() {
                     Office Hours:
                   </Typography>
                   <Typography variant="h5" align="center" color="textSecondary" paragraph>
-                    <p>Monday - Friday: 10 - 6</p>
-                    <p>Saturday: 10 - 2</p>
-                    <p>Sunday: closed</p>
+                    Monday - Friday: 10 - 6
                   </Typography>
-                  <div className={classes.heroButtons}>
-                    <Grid container spacing={2} justify="center">
-                      <Grid item>
-                        {/* <Button variant="contained" color="primary">
-                          Main call to action
-                        </Button> */}
-                      </Grid>
-                      <Grid item>
-                        {/* <Button variant="outlined" color="primary">
-                          Secondary action
-                        </Button> */}
-                      </Grid>
-                    </Grid>
-                  </div>
+                  <Typography variant="h5" align="center" color="textSecondary" paragraph>
+                    Saturday: 10 - 2
+                  </Typography>
+                  <Typography variant="h5" align="center" color="textSecondary" paragraph>
+                    Sunday: closed
+                  </Typography>
                 </List>  
               </div>
             </Grid>  

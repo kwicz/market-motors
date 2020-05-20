@@ -32,8 +32,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const cards = [1, 2, 3];
-
 function FeaturedVehicles() {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -53,7 +51,7 @@ function FeaturedVehicles() {
           <h1>Featured Vehicles</h1>
           <Grid container spacing={4}>
             {vehicles.map((vehicle) => (
-              <Grid item key={vehicle} xs={12} sm={6} md={4}>
+              <Grid item key={vehicle.vehicleId} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}

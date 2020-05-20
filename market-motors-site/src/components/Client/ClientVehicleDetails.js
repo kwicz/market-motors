@@ -1,19 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { makeStyles, useTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Card from '@material-ui/core/Card';
+import Paper from '@material-ui/core/Paper';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import theme from '../../theme/muiTheme'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,17 +29,15 @@ function VehicleDetails() {
   const theme = useTheme();
 
   const vehicle = useSelector(state => state.selectedVehicle);
-  const { vehicleId, vehicleTitle, vin, stockNumber, make, model, year, condition, price, availability, exteriorColor, interiorColor, doors, fuelType, engine, transmission, mileage, features } = vehicle;
-
-  console.log("selected vehicle: ", vehicleTitle)
+  const { vehicleTitle, vin, condition, price, availability, exteriorColor, interiorColor, doors, fuelType, engine, transmission, mileage, features } = vehicle;
 
 
   return (
     <React.Fragment>
       <br />
-      <MuiThemeProvider theme={theme} className={classes.root}>
-        <Container>
-          <Card className={classes.root}>
+      <MuiThemeProvider theme={theme}>
+        <Container className={classes.root}>
+          <Paper elevation={3}>
             <CardHeader
               title={vehicleTitle}
               style={{ textAlign: 'center'}}
@@ -78,12 +72,13 @@ function VehicleDetails() {
                 </CardContent>
               </Grid>
             </Grid>
-              <CardContent>
-                <Typography paragraph>
-                  Additional Vehicle Features: {features}
-                </Typography>
-              </CardContent>
-          </Card>
+            <CardContent>
+              <Typography paragraph>
+                Additional Vehicle Features: {features}
+              </Typography>
+            </CardContent>
+          </Paper>
+          <br />
         </Container>
       </MuiThemeProvider>
     </React.Fragment>

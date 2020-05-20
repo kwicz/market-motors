@@ -79,10 +79,7 @@ export const makeApiCall = () => {
 // }
 
 export const selectedVehicle = (vehicle) => {
-  console.log("vehicle selected: ", vehicle)
-  // console.log("vehicle.vehicleId", vehicle.vehicle.vehicleId)
   const { vehicleId, vehicleTitle, vin, stockNumber, make, model, year, condition, price, availability, exteriorColor, interiorColor, doors, fuelType, engine, transmission, mileage, features } = vehicle;
-  console.log("vehicle selected ID: ", vehicleId)
   return {
     type: c.SELECTED_VEHICLE,
     vehicleId: vehicleId,

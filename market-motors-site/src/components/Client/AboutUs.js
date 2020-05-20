@@ -9,9 +9,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     minHeight: 300,
     padding: theme.spacing(8, 0, 6),
-  },
-  heroButtons: {
-    marginTop: theme.spacing(4),
   }
 }));
 
@@ -24,25 +21,11 @@ function AboutUs() {
         <Container>
           <h1>About Us</h1>
           <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-            Saying stuff about the car dealership.
+            We are a car dealership!
           </Typography>
           <Typography variant="h5" align="center" color="textSecondary" paragraph>
-            More Stuff about the Car Dealership
+            If you want to buy a squid, don't come here.  If you want to buy a car, do come here!
           </Typography>
-          <div className={classes.heroButtons}>
-            <Grid container spacing={2} justify="center">
-              <Grid item>
-                {/* <Button variant="contained" color="primary">
-                  Main call to action
-                </Button> */}
-              </Grid>
-              <Grid item>
-                {/* <Button variant="outlined" color="primary">
-                  Secondary action
-                </Button> */}
-              </Grid>
-            </Grid>
-          </div>
         </Container>
       </div>
     </React.Fragment>

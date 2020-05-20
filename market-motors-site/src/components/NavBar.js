@@ -25,14 +25,14 @@ function NavBar() {
 
   return (
     <React.Fragment>
-      <MuiThemeProvider theme={theme} className={classes.root}>
-        <AppBar  position="static">
+      <MuiThemeProvider theme={theme}>
+        <AppBar  position="static" className={classes.root}>
           <Toolbar>
-              <Typography variant="h6" className={classes.title}>
-            <Link to="/homepage">
-                Market Motors
-            </Link>
-              </Typography>
+            <Typography variant="h6" className={classes.title}>
+              <Link to="/homepage">
+                  Market Motors
+              </Link>
+            </Typography>
             <Button color="inherit">
               <Link to="/vehicles">See All Inventory</Link>
             </Button>

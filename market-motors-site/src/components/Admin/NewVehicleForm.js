@@ -6,10 +6,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import theme from '../../theme/muiTheme'
 
 const useStyles = makeStyles((theme) => ({

@@ -1,4 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { makeStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import * as a from '../../actions'
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -6,12 +10,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
 import theme from '../../theme/muiTheme'
-import { useSelector, useDispatch } from 'react-redux';
-import * as a from '../../actions'
+
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -39,9 +40,9 @@ function FeaturedVehicles() {
   const vehicles = useSelector(state => state.vehiclesAPICall.vehicles)
   console.log("FEATURED VEHICLES", vehicles)
   const vehiclesToFeature = [vehicles[0], vehicles[1], vehicles[2]]
-
+  console.log("vehicles to feature: ", vehiclesToFeature)
   function handleVehicleClick(vehicle) {
-    const action = a.selectedVehicle(vehicle)
+    const action = a.selectedVehicle(vehicle.vehicle)
     dispatch(action);
   }
 
@@ -71,7 +72,7 @@ function FeaturedVehicles() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Link id={vehicle.vehicleId} key={vehicle.vehicleId} to="/vehicledetails" onClick={() => {handleVehicleClick({vehicle});}}>
+                    <Link onClick={() => {handleVehicleClick({vehicle});}} to="/vehicledetails" >
                       <Button size="small" color="primary">
                         Learn More
                       </Button>

@@ -35,6 +35,8 @@ function VehicleDetails() {
   const vehicle = useSelector(state => state.selectedVehicle);
   const { vehicleId, vehicleTitle, vin, stockNumber, make, model, year, condition, price, availability, exteriorColor, interiorColor, doors, fuelType, engine, transmission, mileage, features } = vehicle;
 
+  console.log("selected vehicle: ", vehicleTitle)
+
 
   return (
     <React.Fragment>
@@ -58,7 +60,7 @@ function VehicleDetails() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <CardContent>
-                  <Typography variant="body2" color="textSecondary" component="p">
+                  <Typography variant="body2" color="textSecondary">
                     <List dense="dense">
                       <ListItem>Vin: {vin}</ListItem>
                       <ListItem>Condition: {condition}</ListItem>

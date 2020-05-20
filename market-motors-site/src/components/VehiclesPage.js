@@ -59,15 +59,15 @@ function VehiclesPage() {
                     <TableCell align="right">{row.condition}</TableCell>
                     <TableCell align="right">
                     <Link 
-                  onClick={() => {
-                    handleSelectedRowClick(row);
-                  }}
-                  to="/vehicledetails"
-                  id={row.id}
-                  key={row.id}
-                  >
-                      Details
-                </Link>
+                      onClick={() => {
+                        handleSelectedRowClick(row);
+                      }}
+                      to="/vehicledetails"
+                      id={row.id}
+                      key={row.id}
+                      >
+                        Details
+                    </Link>
                     </TableCell>
                   </TableRow>
               ))}

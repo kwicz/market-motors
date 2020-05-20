@@ -35,52 +35,6 @@ export default function Dashboard() {
   }
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <h1>Current Inventory</h1>
-      <Container>
-        <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Image</TableCell>
-                <TableCell>Vehicle</TableCell>
-                <TableCell align="right">Price</TableCell>
-                <TableCell align="right">Miles</TableCell>
-                <TableCell align="right">Condition</TableCell>
-                <TableCell align="right">Actions</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {vehicles.map((row) => (
-                  <TableRow key={row.vehicleId}>
-                    <TableCell component="th" scope="row" image="https://source.unsplash.com/random">
-
-                    </TableCell>
-                    <TableCell component="th" scope="row">
-                      {row.vehicleTitle}
-                    </TableCell>
-                    <TableCell align="right">{row.price}</TableCell>
-                    <TableCell align="right">{row.mileage}</TableCell>
-                    <TableCell align="right">{row.condition}</TableCell>
-                    <TableCell align="right">
-                    <Link 
-                  onClick={() => {
-                    handleSelectedRowClick(row);
-                  }}
-                  to="/vehicledetails"
-                  id={row.id}
-                  key={row.id}
-                  >
-                      Details
-                </Link>
-                    </TableCell>
-                  </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Container>
-      <br />
-    </MuiThemeProvider>
+    <h1>Dashboard</h1>
   );
 }

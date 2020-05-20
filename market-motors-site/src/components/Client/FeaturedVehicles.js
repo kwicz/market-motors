@@ -10,6 +10,8 @@ import { makeStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import theme from '../../theme/muiTheme'
+import { useSelector, useDispatch } from 'react-redux';
+import * as a from '../../actions'
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -33,6 +35,15 @@ const cards = [1, 2, 3];
 
 function FeaturedVehicles() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const vehicles = useSelector(state => state.vehiclesAPICall.vehicles)
+  console.log("FEATURED VEHICLES", vehicles)
+  const vehiclesToFeature = [vehicles[0], vehicles[1], vehicles[2]]
+
+  function handleVehicleClick(vehicle) {
+    const action = a.selectedVehicle(vehicle)
+    dispatch(action);
+  }
 
   return (
     <React.Fragment>
@@ -40,8 +51,8 @@ function FeaturedVehicles() {
         <Container className={classes.cardGrid}>
           <h1>Featured Vehicles</h1>
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {vehicles.map((vehicle) => (
+              <Grid item key={vehicle} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
@@ -50,16 +61,21 @@ function FeaturedVehicles() {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {vehicle.vehicleTitle}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
+                      {vehicle.mileage} miles
+                    </Typography>
+                    <Typography>
+                      ${vehicle.price}.00
                     </Typography>
                   </CardContent>
                   <CardActions>
+                    <Link id={vehicle.vehicleId} key={vehicle.vehicleId} to="/vehicledetails" onClick={() => {handleVehicleClick({vehicle});}}>
                       <Button size="small" color="primary">
-                        View Details
+                        Learn More
                       </Button>
+                    </Link>
                   </CardActions>
                 </Card>
               </Grid>

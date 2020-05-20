@@ -35,21 +35,15 @@ function VehicleDetails() {
   const vehicle = useSelector(state => state.selectedVehicle);
   const { vehicleId, vehicleTitle, vin, stockNumber, make, model, year, condition, price, availability, exteriorColor, interiorColor, doors, fuelType, engine, transmission, mileage, features } = vehicle;
 
-  const subheader = <CardActionArea>
-    <Button><Link to="/editvehicleform">Edit This Vehicle</Link></Button>
-    <Button>Mark As Sold</Button>
-    <Button>Remove From Inventory</Button>
-    </CardActionArea>
 
   return (
     <React.Fragment>
+      <br />
       <MuiThemeProvider theme={theme} className={classes.root}>
         <Container>
-          <h1>{vehicleTitle}</h1>
           <Card className={classes.root}>
             <CardHeader
               title={vehicleTitle}
-              subheader={subheader}
               style={{ textAlign: 'center'}}
             />
             <Grid container>

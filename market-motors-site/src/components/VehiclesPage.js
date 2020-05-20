@@ -38,7 +38,6 @@ function VehiclesPage() {
   const vehicles = useSelector(state => state.vehiclesAPICall.vehicles)
   
   function handleSelectedRowClick(vehicle) {
-    console.log("SELECTED VEHICLE: ", vehicle)
     const action = a.selectedVehicle(vehicle)
     dispatch(action);
   }

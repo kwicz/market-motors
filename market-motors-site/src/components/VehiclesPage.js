@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { connect } from 'react-redux';
 import { makeApiCall }from '../actions/index';
 import * as a from '../actions';
 import { makeStyles } from '@material-ui/core/styles';

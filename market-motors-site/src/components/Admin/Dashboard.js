@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme/muiTheme'
+import AdminTable from './AdminTable'
 
 const useStyles = makeStyles({
   table: {
@@ -34,12 +35,9 @@ export default function Dashboard() {
                 Add New Vehicle
               </Button>
             </Grid>
-            <Grid item>
-              <Button href="/vehicles" variant="contained" color="primary">
-                See All Vehicles
-              </Button>
-            </Grid>
           </Grid>
+          <hr />
+          <AdminTable />
         </div>
       </MuiThemeProvider>
     </React.Fragment>

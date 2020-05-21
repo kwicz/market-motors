@@ -41,7 +41,35 @@ function VehiclesPage() {
     dispatch(makeApiCall());
   }, [])
   
-  function handleSelectedRowClick(vehicle) {
+
+  async function deleteVehicle(id) {
+    console.log("vehicle id: ", id)
+    await fetch(`http://localhost:5000/api/vehicles/${id}`,{
+      method: 'DELETE'
+    })
+    .then(response => response.json())
+  }
+
+  function handleClickingSale(id, availability) {
+    const updatedAvailability = "Sold";
+    console.log("handleClick")
+    // await fetch(`http://localhost:5000/api/Vehicles/${id}`,{
+    //   method: 'PUT', 
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(propsToUpdate)
+    // })
+  }
+
+  function handleSelectedVehicleClick(vehicle) {
+    console.log("admin table vehicle: ", vehicle)
+    const action = a.selectedVehicle(vehicle)
+    dispatch(action);
+  }
+
+  function handleEditClick(vehicle) {
+    console.log("edit click vehicle: ", vehicle)
     const action = a.selectedVehicle(vehicle)
     dispatch(action);
   }
@@ -79,7 +107,6 @@ function VehiclesPage() {
                     <TableCell align="center" component="th" scope="row">
                       <FormControlLabel  control={
                         <Checkbox
-                          // checked={state.featured}
                           onChange={handleChange}
                           name="featured"
                           color="primary"
@@ -99,7 +126,7 @@ function VehiclesPage() {
                     <TableCell align="center">
                     <IconButton 
                       onClick={() => {
-                        handleSelectedRowClick(row);
+                        handleSelectedVehicleClick(row);
                       }}
                       href="/vehicledetails"
                       id={row.id}
@@ -109,9 +136,9 @@ function VehiclesPage() {
                     </IconButton>
                     <IconButton 
                       onClick={() => {
-                        handleSelectedRowClick(row);
+                        handleEditClick(row);
                       }}
-                      href="/vehicledetails"
+                      href="/editvehicle"
                       id={row.id}
                       key={row.id}
                       >
@@ -119,7 +146,7 @@ function VehiclesPage() {
                     </IconButton>
                     <IconButton 
                       onClick={() => {
-                        handleSelectedRowClick(row);
+                        handleClickingSale(row.id, row.availability);
                       }}
                       href="/vehicledetails"
                       id={row.id}
@@ -129,9 +156,9 @@ function VehiclesPage() {
                     </IconButton>
                     <IconButton 
                       onClick={() => {
-                        handleSelectedRowClick(row);
+                        deleteVehicle(row.id);
                       }}
-                      href="/vehicledetails"
+                      href="/dashboard"
                       id={row.id}
                       key={row.id}
                       >

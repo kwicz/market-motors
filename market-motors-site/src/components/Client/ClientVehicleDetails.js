@@ -29,6 +29,9 @@ function VehicleDetails() {
   const theme = useTheme();
 
   const vehicle = useSelector(state => state.selectedVehicle);
+
+
+  console.log("vehicle details vehicle: ", vehicle)
   const { vehicleTitle, vin, condition, price, availability, exteriorColor, interiorColor, doors, fuelType, engine, transmission, mileage, features } = vehicle;
 
 
@@ -54,21 +57,19 @@ function VehicleDetails() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <CardContent>
-                  <Typography variant="body2" color="textSecondary">
-                    <List dense="dense">
-                      <ListItem>Vin: {vin}</ListItem>
-                      <ListItem>Condition: {condition}</ListItem>
-                      <ListItem>Price: ${price}.00</ListItem>
-                      <ListItem>Availability: {availability}</ListItem>
-                      <ListItem>ExteriorColor: {exteriorColor}</ListItem>
-                      <ListItem>InteriorColor: {interiorColor}</ListItem>
-                      <ListItem>Doors: {doors}</ListItem>
-                      <ListItem>Fuel Type: {fuelType}</ListItem>
-                      <ListItem>Engine: {engine}</ListItem>
-                      <ListItem>Transmission: {transmission}</ListItem>
-                      <ListItem>Mileage: {mileage}</ListItem>
-                    </List>
-                  </Typography>
+                  <List>
+                    <ListItem>Vin: {vin}</ListItem>
+                    <ListItem>Condition: {condition}</ListItem>
+                    <ListItem>Price: ${price}.00</ListItem>
+                    <ListItem>Availability: {availability}</ListItem>
+                    <ListItem>ExteriorColor: {exteriorColor}</ListItem>
+                    <ListItem>InteriorColor: {interiorColor}</ListItem>
+                    <ListItem>Doors: {doors}</ListItem>
+                    <ListItem>Fuel Type: {fuelType}</ListItem>
+                    <ListItem>Engine: {engine}</ListItem>
+                    <ListItem>Transmission: {transmission}</ListItem>
+                    <ListItem>Mileage: {mileage}</ListItem>
+                  </List>
                 </CardContent>
               </Grid>
             </Grid>

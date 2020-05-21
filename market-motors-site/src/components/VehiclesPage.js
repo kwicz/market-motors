@@ -47,7 +47,7 @@ function VehiclesPage() {
             Current Inventory
         </Typography>
         <Typography variant="h5" align="center" color="textSecondary" paragraph>
-            Inventory not updated daily.  Call or stop in for more information.
+            Inventory may not be up to date.  Call or stop in for more information.
         </Typography>
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">

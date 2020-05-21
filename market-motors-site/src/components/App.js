@@ -11,19 +11,25 @@ import EditVehicleForm from './Admin/EditVehicleForm'
 import VehiclesPage from './VehiclesPage'
 import ClientVehicleDetails from './Client/ClientVehicleDetails'
 import AdminVehicleDetails from './Admin/AdminVehicleDetails'
+import styled from 'styled-components';
 import Footer from './Footer'
+import img from '../assets/background.jpg'
 
 function App() {
 
-  // const vehicleList = useSelector(state => state.vehiclesAPICall.vehicles)
-  // console.log("APP VEHICLE LIST", vehicleList)
-  // const vehicles = vehicleList.map((e) => e)
-  // console.log("app vehicles: ", vehicles)
+  const AppStyle = styled.div`
+    // background-image: url(${img});
+    background-color: tan;
+    background-size: cover;
+    min-height: 95vh;
+    padding: 50px;
+    `;
 
   return (
     <Router>
       <NavBar />
       <Switch>
+        {/* <AppStyle> */}
         <Route path="/homepage">
           <HomePage />
          </Route>
@@ -33,6 +39,7 @@ function App() {
          <Route path="/vehicledetails">
           <ClientVehicleDetails />
          </Route>
+         {/* </AppStyle> */}
          <Route path="/signin">
           <SignIn />
          </Route>

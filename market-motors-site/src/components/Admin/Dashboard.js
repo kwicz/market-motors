@@ -6,6 +6,7 @@ import { makeStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme/muiTheme'
 import AdminTable from './AdminTable'
 
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -16,6 +17,7 @@ const useStyles = makeStyles({
 });
 
 export default function Dashboard() {
+
   const classes = useStyles();
 
   return (

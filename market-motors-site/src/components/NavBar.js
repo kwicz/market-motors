@@ -31,7 +31,7 @@ function NavBar() {
         <AppBar  position="static" className={classes.root}>
           <Toolbar>
             <Link to="/homepage" className={classes.title}>
-              <Typography variant="h2" style={{ fontFamily: 'Time New Roman' }}>
+              <Typography variant="h2">
                 Market Motors
               </Typography>
             </Link>

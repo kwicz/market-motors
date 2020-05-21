@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
+// import Link from '@material-ui/core/Link'
 import theme from '../theme/muiTheme'
 
 const useStyles = makeStyles((theme) => ({
@@ -16,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    color: '#fff'
   },
 }));
 
@@ -28,13 +30,17 @@ function NavBar() {
       <MuiThemeProvider theme={theme}>
         <AppBar  position="static" className={classes.root}>
           <Toolbar>
-            <Typography variant="h6" className={classes.title}>
-              <Link to="/homepage">
-                  Market Motors
-              </Link>
-            </Typography>
-            <Button color="inherit">
-              <Link to="/vehicles">See All Inventory</Link>
+            <Link to="/homepage" className={classes.title}>
+              <Typography variant="h2" style={{ fontFamily: 'Time New Roman' }}>
+                Market Motors
+              </Typography>
+            </Link>
+            
+            <Button href="/dashboard" color="inherit">
+              Dashboard
+            </Button>
+            <Button href="/vehicles" color="inherit">
+              See All Inventory
             </Button>
           </Toolbar>
         </AppBar>

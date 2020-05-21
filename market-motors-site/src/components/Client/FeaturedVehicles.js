@@ -35,10 +35,12 @@ const useStyles = makeStyles((theme) => ({
 function FeaturedVehicles() {
   const classes = useStyles();
   const dispatch = useDispatch();
+
   const vehicles = useSelector(state => state.vehiclesAPICall.vehicles)
   console.log("FEATURED VEHICLES", vehicles)
-  const vehiclesToFeature = [vehicles[0], vehicles[1], vehicles[2]]
-  console.log("vehicles to feature: ", vehiclesToFeature)
+  // const vehiclesToFeature = [vehicles[0], vehicles[1], vehicles[2]]
+  // console.log("vehicles to feature: ", vehiclesToFeature)
+  
   function handleVehicleClick(vehicle) {
     const action = a.selectedVehicle(vehicle.vehicle)
     dispatch(action);

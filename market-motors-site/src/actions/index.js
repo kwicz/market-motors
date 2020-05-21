@@ -49,34 +49,6 @@ export const makeApiCall = () => {
 //   }
 // }
 
-// export const requestMap = () => ({
-//   type: c.REQUEST_MAP
-// });
-
-// export const getMapSuccess = (map) => ({
-//   type: c.GET_MAP_SUCCESS,
-//   map
-// });
-
-// export const getMapFailure = (map) => ({
-//   type: c.GET_MAP_FAILURE,
-//   error
-// });
-
-// export const getMap = () => {
-//   return dispatch => {
-//     dispatch(requestMap);
-//     return fetch(`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_API_KEY}`)
-//       .then(response => response.json())
-//       .then(
-//         (jsonifiedResponse) => {
-//           dispatch(getMapSuccess(jsonifiedResponse));
-//         })
-//       .catch((error) => {
-//         dispatch(getMapFailure(error));
-//       });
-//   }
-// }
 
 export const selectedVehicle = (vehicle) => {
   const { vehicleId, vehicleTitle, vin, stockNumber, make, model, year, condition, price, availability, exteriorColor, interiorColor, doors, fuelType, engine, transmission, mileage, features } = vehicle;

@@ -1,40 +1,48 @@
 import React from 'react';
-import NewVehicleForm from './NewVehicleForm'
-import VehiclesPage from '../VehiclesPage'
-import AdminVehicleDetails from './AdminVehicleDetails'
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import * as a from '../../actions'
-import Container from '@material-ui/core/Container';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles, useTheme, MuiThemeProvider } from '@material-ui/core/styles';
-
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme/muiTheme'
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
+  heroButtons: {
+    marginTop: theme.spacing(4),
+  },
 });
 
 export default function Dashboard() {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const vehicles = useSelector(state => state.vehiclesAPICall.vehicles)
-  console.log("DASHBOARD VEHICLES", vehicles)
-  
-  function handleSelectedRowClick(vehicle) {
-    const action = a.selectedVehicle(vehicle)
-    dispatch(action);
-  }
 
   return (
-    <h1>Dashboard</h1>
+    <React.Fragment>
+      <MuiThemeProvider theme={theme}>
+        <br />
+        <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+            Welcome!
+        </Typography>
+        <Typography variant="h5" align="center" color="textSecondary" paragraph>
+            What do you want to do today?
+        </Typography>
+        <div className={classes.heroButtons}>
+          <Grid container spacing={2} justify="center">
+            <Grid item>
+              <Button href="newvehicle" variant="contained" color="primary">
+                Add New Vehicle
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button href="/vehicles" variant="contained" color="primary">
+                See All Vehicles
+              </Button>
+            </Grid>
+          </Grid>
+        </div>
+      </MuiThemeProvider>
+    </React.Fragment>
+
   );
 }

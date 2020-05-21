@@ -6,19 +6,22 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import Grid from '@material-ui/core/Grid';
 import theme from '../../theme/muiTheme'
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '50ch',
+      width: '55ch',
     },
   },
 }));
 
 function NewVehicleForm() {
   const classes = useStyles();
+  const history = useHistory();
 
   let featured;
   const handleChange = (event) => {
@@ -60,6 +63,7 @@ function NewVehicleForm() {
     }
     console.log("VEHICLE: ", vehicle)
     addVehicle(vehicle);
+    history.push('/dashboard');
   }
 
     return (
@@ -68,7 +72,7 @@ function NewVehicleForm() {
         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>Add a New Vehicle</Typography>
         <Container>
           <form className={classes.root} onSubmit={addVehicleToDatabase}>
-          <FormControlLabel control={
+          <FormControlLabel align="center" control={
                 <Checkbox
                   // checked={state.featured}
                   onChange={handleChange}
@@ -81,18 +85,14 @@ function NewVehicleForm() {
             <Typography variant="h5" align="left" color="textSecondary" paragraph>
               Vehicle Basics
             </Typography>
-            {/* <TextField name="vehicleTitle" label="Vehicle Title" type="text" helperText="e.g. 1998 Chevy S10" variant="outlined" /> */}
             <TextField name="make" label="Make" type="text" helperText="e.g. Chevrolet" variant="outlined" />
             <TextField name="model" label="Model" type="text" helperText="e.g. S10" variant="outlined" />
             <TextField name="year" label="Year" type="text" helperText="e.g. 1998" variant="outlined" />
             <TextField name="vin" label="VIN" type="text" helperText="e.g. 3B7KF2363YG116285" variant="outlined" />
-            {/* <TextField name="stockNumber" label="Stock Number" type="text" helperText="e.g. 6285" variant="outlined" /> */}
             <TextField name="condition" label="Condition" type="text" helperText="e.g. Good" variant="outlined" />
             <TextField name="price" label="Price" type="text" helperText="e.g. $2,000" variant="outlined" />
             <TextField name="availability" label="Availability" type="text" helperText="e.g. Available" variant="outlined" />
-
-            <hr />
-            
+            <hr />    
             <Typography variant="h5" align="left" color="textSecondary" paragraph>
             Vehicle Details
             </Typography>
@@ -103,15 +103,20 @@ function NewVehicleForm() {
             <TextField name="engine" label="Engine" type="text" helperText="e.g. 4 Cylinder" variant="outlined" />
             <TextField name="transmission" label="Transmission" type="text" helperText="e.g. Automatic" variant="outlined" />
             <TextField name="mileage" label="Mileage" type="text" helperText="e.g. 100,000" variant="outlined" />
-            <hr />
-            
-            <Typography variant="h5" align="left" color="textSecondary" paragraph>
-            Vehicle Features
-            </Typography>
-
-            
-            <Button type="submit" variant="contained" style={{ color: 
-              'white', background: '#003300' }}>Add New Car</Button>
+            <TextField
+              id="outlined-multiline-static"
+              style={{ width: "112ch"}}
+              label="Additional Features"
+              multiline
+              rows={4}
+              variant="outlined"
+              helperText="Separate features by comma e.g. Power Windows, Air Conditioning, Time Travel"
+            />
+            <br />
+            <Grid container spacing={2} justify="center">
+              <Button type="submit" variant="contained" style={{ color: 
+              'white', background: '#003300' }}>Add New Car</Button>     
+            </Grid>
           </form>
         </Container>
       </MuiThemeProvider>

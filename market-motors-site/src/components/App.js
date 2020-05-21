@@ -1,6 +1,7 @@
 import React from 'react';
 import '../App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import { useSelector, useDispatch } from 'react-redux';
 import NavBar from './NavBar';
 import HomePage from './Client/HomePage'
 import Dashboard from './Admin/Dashboard'
@@ -13,6 +14,12 @@ import AdminVehicleDetails from './Admin/AdminVehicleDetails'
 import Footer from './Footer'
 
 function App() {
+
+  // const vehicleList = useSelector(state => state.vehiclesAPICall.vehicles)
+  // console.log("APP VEHICLE LIST", vehicleList)
+  // const vehicles = vehicleList.map((e) => e)
+  // console.log("app vehicles: ", vehicles)
+
   return (
     <Router>
       <NavBar />

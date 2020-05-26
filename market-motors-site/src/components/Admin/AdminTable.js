@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeApiCall }from '../../actions/index';
 import * as a from '../../actions';
@@ -32,7 +32,9 @@ const useStyles = makeStyles({
 function VehiclesPage() {
   // console.log("VehiclesPages Props: ", props)
   const classes = useStyles();
+  const [ vehicleState, setVehicleState ] = useState({});
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const vehicles = useSelector(state => state.vehiclesAPICall.vehicles)
   console.log("vehicles page: ", vehicles)
@@ -43,12 +45,21 @@ function VehiclesPage() {
   
 
   async function deleteVehicle(id) {
-    console.log("vehicle id: ", id)
-    await fetch(`http://localhost:5000/api/vehicles/${id}`,{
-      method: 'DELETE'
-    })
-    .then(response => response.json())
-  }
+      console.log("vehicle id: ", id)
+      await fetch(`http://localhost:5000/api/vehicles/${id}`,{
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+    }
+
+    function handleSelectedVehicleClick(vehicle) {
+      console.log("admin table vehicle: ", vehicle)
+      const action = a.selectedVehicle(vehicle)
+      dispatch(action);
+      history.push('/vehicledetails');
+    }
 
   function handleClickingSale(id, availability) {
     const updatedAvailability = "Sold";
@@ -62,11 +73,6 @@ function VehiclesPage() {
     // })
   }
 
-  function handleSelectedVehicleClick(vehicle) {
-    console.log("admin table vehicle: ", vehicle)
-    const action = a.selectedVehicle(vehicle)
-    dispatch(action);
-  }
 
   function handleEditClick(vehicle) {
     console.log("edit click vehicle: ", vehicle)
@@ -115,7 +121,7 @@ function VehiclesPage() {
                     />
                     </TableCell>
                     <TableCell  align="center" component="th" scope="row">
-                    <image src="https://source.unsplash.com/random"></image>
+                      I'm an image!
                     </TableCell>
                     <TableCell align="center" component="th" scope="row">
                       {row.vehicleTitle}
@@ -128,9 +134,8 @@ function VehiclesPage() {
                       onClick={() => {
                         handleSelectedVehicleClick(row);
                       }}
-                      href="/vehicledetails"
-                      id={row.id}
-                      key={row.id}
+                      id={row.vehicleId}
+                      key={row.vehicleId}
                       >
                         <List />
                     </IconButton>
@@ -139,28 +144,27 @@ function VehiclesPage() {
                         handleEditClick(row);
                       }}
                       href="/editvehicle"
-                      id={row.id}
-                      key={row.id}
+                      id={row.vehicleId}
+                      key={row.vehicleId}
                       >
                         <Edit />
                     </IconButton>
                     <IconButton 
                       onClick={() => {
-                        handleClickingSale(row.id, row.availability);
+                        handleClickingSale(row.vehicleId, row.availability);
                       }}
-                      href="/vehicledetails"
-                      id={row.id}
-                      key={row.id}
+                      id={row.vehicleId}
+                      key={row.vehicleId}
                       >
                         <AttachMoney />
                     </IconButton>
                     <IconButton 
                       onClick={() => {
-                        deleteVehicle(row.id);
+                        deleteVehicle(row.vehicleId);
                       }}
                       href="/dashboard"
-                      id={row.id}
-                      key={row.id}
+                      id={row.vehicleId}
+                      key={row.vehicleId}
                       >
                         <Delete />
                     </IconButton>

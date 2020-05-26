@@ -11,19 +11,19 @@ import EditVehicleForm from './Admin/EditVehicleForm'
 import VehiclesPage from './VehiclesPage'
 import ClientVehicleDetails from './Client/ClientVehicleDetails'
 import AdminVehicleDetails from './Admin/AdminVehicleDetails'
-import styled from 'styled-components';
 import Footer from './Footer'
-import img from '../assets/background.jpg'
+// import styled from 'styled-components';
+// import img from '../assets/background.jpg'
 
 function App() {
 
-  const AppStyle = styled.div`
-    // background-image: url(${img});
-    background-color: tan;
-    background-size: cover;
-    min-height: 95vh;
-    padding: 50px;
-    `;
+  // background-image: url(${img});
+  // const AppStyle = styled.div`
+  //   background-color: #ede5d3;
+  //   background-size: cover;
+  //   min-height: 95vh;
+  //   padding: 50px;
+  //   `;
 
   return (
     <Router>

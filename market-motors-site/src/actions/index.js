@@ -29,28 +29,6 @@ export const makeApiCall = () => {
   }
 }
 
-
-// export const addVehicle = () => ({
-//   type: c.ADD_VEHICLE
-// });
-
-// export const postApiCall = () => {
-//   return dispatch => {
-//     dispatch(addVehicle);
-//     return fetch(`http://localhost:5000/api/vehicles/`,
-//       method: 'POST')
-//       .then(response => response.json())
-//       .then(
-//         (jsonifiedResponse) => {
-//           dispatch(getVehiclesSuccess(jsonifiedResponse));
-//         })
-//       .catch((error) => {
-//         dispatch(getVehiclesFailure(error));
-//       });
-//   }
-// }
-
-
 export const selectedVehicle = (vehicle) => {
   console.log("index vehicle: ", vehicle)
   const { vehicleId, vehicleTitle, vin, stockNumber, make, model, year, condition, price, availability, exteriorColor, interiorColor, doors, fuelType, engine, transmission, mileage, features } = vehicle;

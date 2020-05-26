@@ -30,13 +30,17 @@ function Footer() {
   return (
     <React.Fragment>
       <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          <Link to="/signin">Admin Login</Link>
+
+        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+        (574) 215-9700
         </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
         23785 US 33, Elkhart, IN 46517
         </Typography>
         <Copyright />
+        <Typography variant="h6" align="center" gutterBottom>
+          <Link to="/signin">Admin Login</Link>
+        </Typography>
       </footer>
     </React.Fragment>
   );

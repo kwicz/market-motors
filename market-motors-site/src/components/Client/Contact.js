@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Map from './Map';
+import MapContainer from './Map';
 import List from '@material-ui/core/List';
 
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +26,7 @@ function Contact() {
         <h1>Contact Us</h1>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
-              <Map />
+              <MapContainer />
             </Grid>
             <Grid item xs={12} sm={6}>
               <div className={classes.heroContent}>
@@ -55,6 +55,7 @@ function Contact() {
             </Grid>  
           </Grid>
       </Container>
+      <br />
     </React.Fragment>
   );
 }

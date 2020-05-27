@@ -44,28 +44,27 @@ function EditVehicleForm() {
 
 
   // Push updated data into the database
-  async function handleUpdate(newVehicleValues) {
-    console.log("newVehicleValues: ", newVehicleValues)
-    const { vehicleId, vehicleTitle, vin, stockNumber, make, model, year, condition, price, availability, exteriorColor, interiorColor, doors, fuelType, engine, transmission, mileage, features } = newVehicleValues;
+  async function handleUpdateVehicle(event) {
+    event.preventDefault();
+    console.log("updated vehicle values: ", event.target.year.value)
     const updatedVehicle = {
-      vehicleId: vehicleId,
-      vehicleTitle: vehicleTitle,
-      vin: vin,
-      stockNumber: stockNumber,
-      make: make,
-      model: model,
-      year: year,
-      condition: condition,
-      price: price,
-      availability: availability,
-      exteriorColor: exteriorColor,
-      interiorColor: interiorColor,
-      doors: doors,
-      fuelType: fuelType,
-      engine: engine,
-      transmission: transmission,
-      mileage: mileage,
-      features: features
+      vehicleTitle: event.target.year.value + " " + event.target.make.value + " " + event.target.model.value,
+      featured: featured,
+      make: event.target.make.value,
+      model: event.target.model.value,
+      year: event.target.year.value,
+      vin: event.target.vin.value,
+      stockNumber: event.target.vin.value.slice(-4),
+      condition: event.target.condition.value,
+      price: event.target.price.value,
+      availability: event.target.availability.value,
+      exteriorColor: event.target.exteriorColor.value,
+      interiorColor: event.target.interiorColor.value,
+      doors: event.target.doors.value,
+      fuelType: event.target.fuelType.value,
+      engine: event.target.engine.value,
+      transmission: event.target.transmission.value,
+      mileage: event.target.mileage.value
     }
     await fetch(`http://localhost:5000/api/Vehicles/${vehicleId}`,{
       method: 'PUT', 
@@ -74,6 +73,7 @@ function EditVehicleForm() {
       },
       body: JSON.stringify(updatedVehicle)
     })
+    history.push('/dashboard');
   }
 
 
@@ -82,7 +82,7 @@ function EditVehicleForm() {
     <MuiThemeProvider theme={theme}>
       <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>Update Vehicle</Typography>
       <Container>
-        <form className={classes.root} onSubmit={handleUpdate(vehicle)}>
+        <form className={classes.root} onSubmit={handleUpdateVehicle}>
         <FormControlLabel align="center" control={
               <Checkbox
                 // checked={state.featured}

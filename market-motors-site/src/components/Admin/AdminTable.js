@@ -32,7 +32,6 @@ const useStyles = makeStyles({
 function VehiclesPage() {
   // console.log("VehiclesPages Props: ", props)
   const classes = useStyles();
-  const [ vehicleState, setVehicleState ] = useState({});
   const dispatch = useDispatch();
   const history = useHistory();
 

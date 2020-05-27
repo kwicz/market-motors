@@ -9,6 +9,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import theme from '../../theme/muiTheme'
 import { useHistory } from "react-router-dom";
+import ImageUploader from 'react-images-upload';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,6 +43,7 @@ function NewVehicleForm() {
   
   function addVehicleToDatabase(event) {
     event.preventDefault();
+    console.log("image: ", event.target.image.value)
     const vehicle = {
       vehicleTitle: event.target.year.value + " " + event.target.make.value + " " + event.target.model.value,
       featured: featured,
@@ -72,7 +74,11 @@ function NewVehicleForm() {
         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>Add a New Vehicle</Typography>
         <Container>
           <form className={classes.root} onSubmit={addVehicleToDatabase}>
-          <FormControlLabel align="center" control={
+
+            <Typography variant="h5" align="left" color="textSecondary" paragraph>
+              Vehicle Basics
+            </Typography>
+            <FormControlLabel align="center" control={
                 <Checkbox
                   // checked={state.featured}
                   onChange={handleChange}
@@ -82,9 +88,15 @@ function NewVehicleForm() {
               }
               label="Feature this vehicle?"
             />
-            <Typography variant="h5" align="left" color="textSecondary" paragraph>
-              Vehicle Basics
-            </Typography>
+            <ImageUploader
+                name="image"
+                withIcon={true}
+                buttonText='Choose images'
+                // onChange={this.onDrop}
+                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                maxFileSize={5242880}
+                withPreview={true}
+            />
             <TextField name="make" label="Make" type="text" helperText="e.g. Chevrolet" variant="outlined" />
             <TextField name="model" label="Model" type="text" helperText="e.g. S10" variant="outlined" />
             <TextField name="year" label="Year" type="text" helperText="e.g. 1998" variant="outlined" />

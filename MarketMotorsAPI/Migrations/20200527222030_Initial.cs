@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MarketMotors.Migrations
 {
-    public partial class AddInitial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,8 +14,9 @@ namespace MarketMotors.Migrations
                     VehicleId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     VehicleTitle = table.Column<string>(nullable: true),
+                    Featured = table.Column<string>(nullable: true),
                     Vin = table.Column<string>(nullable: true),
-                    StockNumber = table.Column<string>(maxLength: 4, nullable: true),
+                    StockNumber = table.Column<string>(nullable: true),
                     Make = table.Column<string>(nullable: true),
                     Model = table.Column<string>(nullable: true),
                     Year = table.Column<string>(nullable: true),
@@ -55,6 +56,21 @@ namespace MarketMotors.Migrations
                         principalColumn: "VehicleId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Vehicles",
+                columns: new[] { "VehicleId", "Availability", "Condition", "Doors", "Engine", "ExteriorColor", "Featured", "FuelType", "InteriorColor", "Make", "Mileage", "Model", "Price", "StockNumber", "Transmission", "VehicleTitle", "Vin", "Year" },
+                values: new object[] { 1, "Available", "Good", "3", "V8", "Taupe", "true", "Gasoline", "Taupe", "Chevy", "100,000", "Model", "2,000", "1655", "Automatic", "1998 Chevy S10", "79879851655", "1998" });
+
+            migrationBuilder.InsertData(
+                table: "Vehicles",
+                columns: new[] { "VehicleId", "Availability", "Condition", "Doors", "Engine", "ExteriorColor", "Featured", "FuelType", "InteriorColor", "Make", "Mileage", "Model", "Price", "StockNumber", "Transmission", "VehicleTitle", "Vin", "Year" },
+                values: new object[] { 2, "Available", "Like New", "4", "4 Cylinder", "Red", "true", "Gasoline", "Black", "Honda", "80,000", "Fit", "6,000", "5432", "Manual", "2006 Honda Fit", "98765432198765432", "2006" });
+
+            migrationBuilder.InsertData(
+                table: "Vehicles",
+                columns: new[] { "VehicleId", "Availability", "Condition", "Doors", "Engine", "ExteriorColor", "Featured", "FuelType", "InteriorColor", "Make", "Mileage", "Model", "Price", "StockNumber", "Transmission", "VehicleTitle", "Vin", "Year" },
+                values: new object[] { 3, "Available", "Like New", "4", "6 Cylinder", "Silver", "true", "Gasoline", "Black", "Subaru", "100,000", "Outback", "6,000", "5678", "Automatic", "2016 Subaru Outback", "12345678912345678", "2016" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Features_VehicleId",

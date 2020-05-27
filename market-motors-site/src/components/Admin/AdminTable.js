@@ -98,6 +98,7 @@ function VehiclesPage() {
     console.log("edit click vehicle: ", vehicle)
     const action = a.selectedVehicle(vehicle)
     dispatch(action);
+    history.push('/editvehicle');
   }
 
   let featured;
@@ -162,7 +163,6 @@ function VehiclesPage() {
                       onClick={() => {
                         handleEditClick(row);
                       }}
-                      href="/editvehicle"
                       id={row.vehicleId}
                       >
                         <Edit />

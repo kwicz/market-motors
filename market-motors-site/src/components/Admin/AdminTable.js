@@ -37,7 +37,6 @@ function VehiclesPage() {
   const history = useHistory();
 
   const vehicles = useSelector(state => state.vehiclesAPICall.vehicles)
-  console.log("vehicles page: ", vehicles)
 
   useEffect(() => {
     dispatch(makeApiCall());

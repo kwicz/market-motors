@@ -61,16 +61,37 @@ function VehiclesPage() {
       history.push('/vehicledetails');
     }
 
-  function handleClickingSale(id, availability) {
+  async function handleClickingSale(vehicle) {
+    const { vehicleId, vehicleTitle, vin, stockNumber, make, model, year, condition, price, availability, exteriorColor, interiorColor, doors, fuelType, engine, transmission, mileage, features } = vehicle;
     const updatedAvailability = "Sold";
+    const updatedVehicle = {
+      vehicleId: vehicleId,
+      vehicleTitle: vehicleTitle,
+      vin: vin,
+      stockNumber: stockNumber,
+      make: make,
+      model: model,
+      year: year,
+      condition: condition,
+      price: price,
+      availability: updatedAvailability,
+      exteriorColor: exteriorColor,
+      interiorColor: interiorColor,
+      doors: doors,
+      fuelType: fuelType,
+      engine: engine,
+      transmission: transmission,
+      mileage: mileage,
+      features: features
+    }
     console.log("handleClick")
-    // await fetch(`http://localhost:5000/api/Vehicles/${id}`,{
-    //   method: 'PUT', 
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(propsToUpdate)
-    // })
+    await fetch(`http://localhost:5000/api/Vehicles/${vehicleId}`,{
+      method: 'PUT', 
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedVehicle)
+    })
   }
 
 
@@ -135,7 +156,6 @@ function VehiclesPage() {
                         handleSelectedVehicleClick(row);
                       }}
                       id={row.vehicleId}
-                      key={row.vehicleId}
                       >
                         <List />
                     </IconButton>
@@ -145,16 +165,14 @@ function VehiclesPage() {
                       }}
                       href="/editvehicle"
                       id={row.vehicleId}
-                      key={row.vehicleId}
                       >
                         <Edit />
                     </IconButton>
                     <IconButton 
                       onClick={() => {
-                        handleClickingSale(row.vehicleId, row.availability);
+                        handleClickingSale(row);
                       }}
                       id={row.vehicleId}
-                      key={row.vehicleId}
                       >
                         <AttachMoney />
                     </IconButton>
@@ -164,7 +182,6 @@ function VehiclesPage() {
                       }}
                       href="/dashboard"
                       id={row.vehicleId}
-                      key={row.vehicleId}
                       >
                         <Delete />
                     </IconButton>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { makeStyles, useTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';

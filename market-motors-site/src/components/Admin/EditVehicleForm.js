@@ -36,7 +36,7 @@ function EditVehicleForm() {
   // Extract selected vehicle data from state
   const vehicle = useSelector(state => state.selectedVehicle)
   console.log("edit vehicles page: ", vehicle)
-  const { vehicleId, vehicleTitle, vin, stockNumber, make, model, year, condition, price, availability, exteriorColor, interiorColor, doors, fuelType, engine, transmission, mileage, features } = vehicle;
+  const { vehicleId, vin, make, model, year, condition, price, availability, exteriorColor, interiorColor, doors, fuelType, engine, transmission, mileage, features } = vehicle;
 
   useEffect(() => {
     dispatch(makeApiCall());

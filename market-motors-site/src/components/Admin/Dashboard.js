@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import theme from '../../theme/muiTheme'
 import AdminTable from './AdminTable'
+import AdminTable2 from './AdminTable2'
 
 
 const useStyles = makeStyles({
@@ -39,6 +40,7 @@ export default function Dashboard() {
             </Grid>
           </Grid>
           <hr />
+          <AdminTable2 />
           <AdminTable />
         </div>
       </MuiThemeProvider>

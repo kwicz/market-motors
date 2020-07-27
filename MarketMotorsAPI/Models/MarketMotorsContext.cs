@@ -11,7 +11,7 @@ namespace MarketMotors.Models
 
     public DbSet<Vehicle> Vehicles { get; set; }
     public DbSet<Feature> Features { get; set; }
-    // public DbSet<Image> Images { get; set; }
+    public DbSet<Image> Images { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -35,7 +35,9 @@ namespace MarketMotors.Models
                   FuelType = "Gasoline",
                   Engine = "V8",
                   Transmission = "Automatic",
-                  Mileage = "100,000"
+                  Mileage = "100,000",
+                  Features = {},
+                  Images = {}
                 },
               new Vehicle   {
                   VehicleId = 2,
@@ -55,7 +57,9 @@ namespace MarketMotors.Models
                   FuelType = "Gasoline",
                   Engine = "4 Cylinder",
                   Transmission = "Manual",
-                  Mileage = "80,000"
+                  Mileage = "80,000",
+                  Features = {},
+                  Images = {}
                 },
               new Vehicle   {
                   VehicleId = 3,
@@ -75,7 +79,9 @@ namespace MarketMotors.Models
                   FuelType = "Gasoline",
                   Engine = "6 Cylinder",
                   Transmission = "Automatic",
-                  Mileage = "100,000"
+                  Mileage = "100,000",
+                  Features = {},
+                  Images = {}
                 }                
             );
     }

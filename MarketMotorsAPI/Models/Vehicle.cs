@@ -8,6 +8,7 @@ namespace MarketMotors.Models
     public Vehicle()
     {
       this.Features = new HashSet<Feature>();
+      this.Images = new HashSet<Image>();
     }
     public int VehicleId { get; set; }
     public string VehicleTitle { get; set; }
@@ -28,6 +29,6 @@ namespace MarketMotors.Models
     public string Transmission { get; set; }
     public string Mileage { get; set; }
     public virtual ICollection<Feature> Features { get; set; }
-
+    public virtual ICollection<Image> Images { get; set; }
   }
 }

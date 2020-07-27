@@ -20,13 +20,24 @@ import List from '@material-ui/icons/List';
 import Edit from '@material-ui/icons/Edit';
 import Delete from '@material-ui/icons/Delete';
 import AttachMoney from '@material-ui/icons/AttachMoney';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 650,
   },
-});
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 300,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  }, 
+}));
 
 
 function VehiclesPage() {
@@ -34,13 +45,34 @@ function VehiclesPage() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
-
   const vehicles = useSelector(state => state.vehiclesAPICall.vehicles)
 
+  // Get all vehicles from database
   useEffect(() => {
     dispatch(makeApiCall());
   }, [])
   
+
+  // Select list of vehicles to view
+  // const availabilityList = vehicles.map((e) => <MenuItem value={e.availability}>{e.availability}</MenuItem>)
+  const availabilityList = vehicles.map((e) => e.availability)
+  const distinctAvailabilityList = [...new Set(availabilityList)];
+  console.log("availability List: ", availabilityList)
+  console.log("distinct list: ", distinctAvailabilityList)
+  const availabilityMenuList = distinctAvailabilityList.map((e) => <MenuItem value={e}>{e}</MenuItem>)
+
+  let showVehiclesList = vehicles;
+  function handleAvailabilitySelection(event) {
+    event.preventDefault();
+    console.log("click!")
+    const selectedAvailability = event.target.value;
+    console.log(selectedAvailability);
+    showVehiclesList = vehicles.filter(e => e.availability === selectedAvailability)
+    console.log("showVehiclesList: ", showVehiclesList)
+  }
+
+  // const selectedVehicles = 
+
 
   async function deleteVehicle(id) {
       console.log("vehicle id: ", id)
@@ -111,9 +143,24 @@ function VehiclesPage() {
     <React.Fragment>
       <br />
       <Container>
-      <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-            Current Inventory
+
+        <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+            View Inventory
         </Typography>
+        <Typography align="center">
+          <FormControl className={classes.formControl}>
+            <InputLabel id="availablility-dropdown-label">Select Vehicles To View</InputLabel>
+            <Select
+              degaultValue="Available"
+              labelId="availbility-dropdown-label"
+              id="availability-dropdown"
+              onChange={handleAvailabilitySelection}
+            >
+              {availabilityMenuList}
+            </Select>
+          </FormControl>
+        </Typography>
+
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
             <TableHead>
@@ -128,7 +175,7 @@ function VehiclesPage() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {vehicles.map((row) => (
+              {showVehiclesList.map((row) => (
                   <TableRow key={row.vehicleId}>
                     <TableCell align="center" component="th" scope="row">
                       <FormControlLabel  control={
